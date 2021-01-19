@@ -8,6 +8,7 @@ RUN sed -i "s/archive.raspberrypi.org\/debian/ftp.harukasan.org\/raspberrypi\/de
 
 WORKDIR /usr/src/app
 RUN apt-get update && apt-get install build-essential libopenblas-dev libblas-dev m4 cmake git wget curl cython python3-dev python3-yaml python3-setuptools libavutil-dev libavcodec-dev libavformat-dev libswscale-dev -y
+RUN pip3 install dataclass
 RUN git clone --recursive https://github.com/pytorch/pytorch ./pytorch
 
 WORKDIR /usr/src/app/pytorch
