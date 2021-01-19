@@ -1,4 +1,4 @@
-FROM balenalib/raspberrypi3-python:3-buster
+FROM balenalib/raspberrypi3:buster
 # great feature from balena images that allow xcompile!
 RUN [ "cross-build-start" ]
 
