@@ -17,4 +17,10 @@ RUN export NO_QNNPACK=1
 # build pytorch
 RUN python3 setup.py build
 
+WORKDIR /usr/src/app
+RUN git clone --recursive https://github.com/pytorch/vision ./vision
+
+WORKDIR /usr/src/app/vision
+RUN python3 setup.py build
+
 RUN [ "cross-build-end" ]
