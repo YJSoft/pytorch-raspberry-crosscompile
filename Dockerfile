@@ -2,8 +2,11 @@ FROM balenalib/raspberrypi3-python
 # great feature from balena images that allow xcompile!
 RUN [ "cross-build-start" ]
 
+RUN sed -i "s/archive.raspbian.org\/raspbian/ftp.harukasan.org\/raspbian\/raspbian/g" /etc/apt/sources.list
+RUN sed -i "s/archive.raspberrypi.org\/debian/ftp.harukasan.org\/raspberrypi\/debian/g" /etc/apt/sources.list.d/raspi.list
+
 WORKDIR /usr/src/app
-RUN apt-get update && apt-get install libopenblas-dev libblas-dev m4 cmake cython python3-dev python3-yaml python3-setuptools libavutil-dev libavcodec-dev libavformat-dev libswscale-dev -y
+RUN apt-get update && apt-get install build-essential libopenblas-dev libblas-dev m4 cmake cython python3-dev python3-yaml python3-setuptools libavutil-dev libavcodec-dev libavformat-dev libswscale-dev -y
 RUN git clone --recursive https://github.com/pytorch/pytorch ./pytorch
 
 WORKDIR /usr/src/app/pytorch
