@@ -2,6 +2,7 @@ FROM balenalib/raspberrypi3-python
 # great feature from balena images that allow xcompile!
 RUN [ "cross-build-start" ]
 
+RUN sed -i "s/deb.debian.org/ftp.harukasan.org/g" /etc/apt/sources.list
 RUN sed -i "s/archive.raspbian.org\/raspbian/ftp.harukasan.org\/raspbian\/raspbian/g" /etc/apt/sources.list
 RUN sed -i "s/archive.raspberrypi.org\/debian/ftp.harukasan.org\/raspberrypi\/debian/g" /etc/apt/sources.list.d/raspi.list
 
